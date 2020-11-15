@@ -1,0 +1,79 @@
+<!-- BEGIN:: Update -->
+<ng-template #editUser>
+    <div class="modal-header text-center">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="btnClose()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h3>Modificar Usuario</h3>
+    </div>
+    <div class="modal-body" *ngIf="form">
+        <form [formGroup]="form" (keyup.enter)="btnUpdate()">
+            <!-- lado izquierdo-->
+            <div class="row form-group">
+                <div
+                    class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0 text-center">
+                    <div class="form-group col-lg-12" [ngClass]="_validator.displayCss('userName', form)">
+                        <input type="text" class="form-control text-center" placeholder="Nombre de usuario"
+                            maxlength="150" formControlName="userName" id="userName">
+                        <app-field-error-display [displayError]="_validator.isFieldInvalid('userName', form)"
+                            errorMsg="{{_validator.errorMessage}}">
+                        </app-field-error-display>
+                    </div>
+
+                    <div class="form-group col-lg-12" [ngClass]="_validator.displayCssSelect('idGender', form)">
+                        <select class="form-control text-center" formControlName="idGender">
+                            <option disabled [value]=0>Selecciona tu genero </option>
+                            <option *ngFor="let x of lstGender" [value]="x.id">
+                                {{x.name}}
+                            </option>
+                        </select>
+                        <app-field-error-display [displayError]="_validator.isFieldInvalid('idGender', form)"
+                            errorMsg="{{_validator.errorMessage}}">
+                        </app-field-error-display>
+                    </div>
+                    <div class="form-group col-lg-12"
+                        [ngClass]="{ 'has-error has-feedback': _user.errorCssEmail('email', form) }">
+                        <input type="text" class="form-control text-center" placeholder="Correo electrónico"
+                            maxlength="150" formControlName="email">
+                        <app-field-error-display [displayError]="_validator.isFieldInvalid('email', form)"
+                            errorMsg="{{_validator.errorMessage}}">
+                        </app-field-error-display>
+                        <app-field-error-display [displayError]="_user.errorCssEmail('email', form)"
+                            errorMsg="Dirección de correo electrónico inválida">
+                        </app-field-error-display>
+                    </div>
+                    <div class="form-group col-lg-12" [ngClass]="_user.verifyPassword('confirmPassword', form)">
+                        <input type="password" class="form-control text-center" placeholder="Contraseña" maxlength="150"
+                            formControlName="password" (paste)="false" showHidePass>
+                        <app-field-error-display [displayError]="_validator.isFieldInvalid('password', form)"
+                            errorMsg="{{_validator.errorMessage}}">
+                        </app-field-error-display>
+                    </div>
+                    <div class="form-group col-lg-12" [ngClass]="_user.verifyPassword('confirmPassword', form)">
+                        <input type="password" class="form-control text-center" placeholder="Confirmar contraseña"
+                            maxlength="150" formControlName="confirmPassword" (paste)="false" showHidePass>
+                        <app-field-error-display [displayError]="_validator.isFieldInvalid('confirmPassword', form)"
+                            errorMsg="{{_validator.errorMessage}}">
+                        </app-field-error-display>
+                        <app-field-error-display [displayError]="!_user.passwordsMatch(form)"
+                            errorMsg="Las contraseñas no coinciden.">
+                        </app-field-error-display>
+                        <app-field-error-display [displayError]="!_user.isValidPassword(form)"
+                            errorMsg="Las contraseña debe contener: al menos una mayúscula, una minúscula, un símbolo, un número y 10 caracteres.">
+                        </app-field-error-display>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer text-center">
+        <button type="button" class="btn btn-primary btn-md" aria-label="Close" (click)="btnClose()">
+            Cancelar
+        </button>
+        <button type="button" class="btn btn-success btn-md" [disabled]="bLoading" (click)="btnUpdate()">
+            Guardar
+            <i class="fa fa-spinner fa-spin fa-fw" *ngIf="bLoading"></i>
+        </button>
+    </div>
+</ng-template>
+<!-- END:: update -->

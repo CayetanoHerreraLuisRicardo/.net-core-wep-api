@@ -1,0 +1,51 @@
+<!-- <button class="btn btn-danger" (click)="btnOpenLogin(login)" *ngIf=" !(isLoggedIn$ | async)">Iniciar sesión</button> -->
+<ng-template #login>
+    <div class="modal-header text-center">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="btnCloseLogin()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h3>Iniciar sesión</h3>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="fgLogin" (keyup.enter)="btnSignIn()">
+            <img id="profile-img" class="profile-img-card" src="assets/images/users/avatar_2x.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <div class="row form-group">
+                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0 text-center"
+                    [ngClass]="_validator.displayCss('userName', fgLogin)">
+                    <input type="text" class="form-control text-center" minlength="7" placeholder="Usuario"
+                        formControlName="userName" #userName>
+                    <app-field-error-display [displayError]="_validator.isFieldInvalid('userName', fgLogin)"
+                        errorMsg="{{_validator.errorMessage}}">
+                    </app-field-error-display>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0 text-center"
+                    [ngClass]="_validator.displayCss('password', fgLogin)">
+                    <input type="password" class="form-control text-center" maxlength="50" formControlName="password"
+                        (paste)="false" placeholder="Contraseña" showHidePass>
+                    <app-field-error-display [displayError]="_validator.isFieldInvalid('password', fgLogin)"
+                        errorMsg="{{_validator.errorMessage}}">
+                    </app-field-error-display>
+                </div>
+            </div>
+            <br>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <div
+            class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0 text-center">
+            <button type="button" (click)="btnSignIn()" [disabled]="bLoading"
+                class="btn btn-md btn-danger m-btn--pill btn-block">Iniciar
+                sesión
+                <i class="fa fa-spinner fa-spin fa-fw" *ngIf="bLoading"></i>
+            </button>
+        </div>
+        <div
+            class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0 text-center">
+            <br>
+            <a href="javascript:void(0);" (click)="btnOpenRegistry()">¿Necesitas una cuenta? Regístrate aquí</a>
+        </div>
+    </div>
+</ng-template>

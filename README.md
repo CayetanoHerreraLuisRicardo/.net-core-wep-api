@@ -1,27 +1,27 @@
-# AngularSlabon
+# angular-users-crud
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.4.
+Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) versión 10.1.4.
 
-## Development server
+## Run app
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+`git clone https://github.com/CayetanoHerreraLuisRicardo/angular-users-crud.git`
 
-## Code scaffolding
+`cd angular-users-crud.git`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+`npm install`
 
-## Build
+`ng serve`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Ejecuta `ng serve` para correr la aplicación. Navega a  `http://localhost:4200/`. La app cargará actomaticamente los cambios hechos en el navegador web.
 
-## Running unit tests
+## Dependencia npm propia
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Ademas de las dependencias de terceros, me tomé la libertad de crear mi propio paquete o 
+dependencia alojada en `npm` que es el cliente api para hacer las llamadas a la API REST. 
+La dependencias usada se llama  [ng-slabon-api-client](https://www.npmjs.com/package/ng-slabon-api-client)
 
-## Running end-to-end tests
+## Proyecto .NET CORE Web API
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+La API esta hecha con .NET Core Wep API. (API REST) aqui te dejo mi [Repositorio de la API](https://github.com/CayetanoHerreraLuisRicardo/.net-core-wep-api) para que puedas clonarlo y ver como funciona en tu entorno local.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Aquí el  [DEMO](https://cayetanoherreraluisricardo.github.io/Angular/users-crud/) la cual esta apuntando a http://localhost:59353 (asugúrate de correr tu API .NET Core en el puerto 52353 para poder ver el demo) en cuanto a las CORS no te preocupes el proyecto NET CORE esta habilitado para aceptar cualquier origen.

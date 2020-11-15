@@ -1,0 +1,46 @@
+<div class="container">
+    <!-- BEGIN:: Grid -->
+    <kendo-grid [data]="gridData" [pageSize]="state.take" [skip]="state.skip" [sort]="state.sort"
+        [filter]="state.filter" [sortable]="true" [pageable]="true" filterable="menu" (edit)="actionHandler($event)"
+        (dataStateChange)="dataStateChange($event)" [rowClass]="rowClassCallback">
+        <kendo-grid-column field="userName" title="Usuario" width="150">
+        </kendo-grid-column>
+        <kendo-grid-column field="email" title="Correo electrónico" width="150">
+        </kendo-grid-column>
+        <kendo-grid-column field="gender" title="Género" width="150">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                {{ dataItem.gender | gender}}
+            </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column field="status" title="Estatus" width="150" class="statusColumn"
+            [style]="{'text-align': 'center'}">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                {{ dataItem.status | status}}
+            </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-command-column title="Acciones" width="130">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                <div class="text-center" style="display:block;">
+                    <button class="btn btn-primary" kendoGridEditCommand data-toggle="modal" (click)="btnUpdateModal()"
+                        *ngIf="dataItem.status">
+                        <i class="fa fa-pencil"></i>
+                    </button>
+                    <button class="btn btn-danger" kendoGridEditCommand data-toggle="modal" (click)="btnDeleteModal()"
+                        *ngIf="dataItem.status">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </div>
+            </ng-template>
+        </kendo-grid-command-column>
+        <ng-template kendoGridToolbarTemplate>
+            <button kendoGridExcelCommand>
+                <span class="fa fa-file-excel-o"></span> &#160; Exportar a Excel
+            </button>
+            <button kendoGridAddCommand (click)="onClick()">
+                <span class="fa fa-plus-circle"></span> &#160; Agregar Usuario
+            </button>
+        </ng-template>
+        <kendo-grid-excel fileName="usuarios.xlsx" [fetchData]="excelWithFlter"></kendo-grid-excel>
+    </kendo-grid>
+    <!-- END:: Grid -->
+</div>

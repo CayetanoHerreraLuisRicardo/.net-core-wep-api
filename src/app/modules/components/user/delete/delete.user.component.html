@@ -1,0 +1,27 @@
+<!--BEGIN:::Eliminar-->
+<ng-template #deleteUser>
+    <div class="modal-header text-center">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="btnClose()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h3>Eliminar Usuario</h3>
+    </div>
+    <div class="modal-body text-center">
+        <div class="form-group">
+            <p class="body-eliminar">El usario <code>{{oUser.userName}}</code> será eliminado
+                <br />
+                <b>¿desea continuar?</b>
+            </p>
+        </div>
+    </div>
+    <div class="modal-footer text-center">
+        <button type="button" class="btn btn-primary btn-md" aria-label="Close" (click)="btnClose()">
+            Cancelar
+        </button>
+        <button type="button" class="btn btn-danger btn-md" [disabled]="bLoading" (click)="btnDelete()">
+            Confirmar
+            <i class="fa fa-spinner fa-spin fa-fw" *ngIf="bLoading"></i>
+        </button>
+    </div>
+</ng-template>
+<!--END:::Eliminar-->

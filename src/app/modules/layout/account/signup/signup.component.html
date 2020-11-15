@@ -1,0 +1,94 @@
+<!-- <button class="btn btn-danger" (click)="btnOpenRegistry(registry)" *ngIf=" !(isLoggedIn$ | async)">Registrarse</button> -->
+<ng-template #registry>
+    <div class="modal-header text-center">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="btnCloseRegistry()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h3>Registro</h3>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="fgRegistry" (keyup.enter)="bntRegister()">
+            <div class=" row form-group">
+                <div
+                    class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0 text-center">
+                    <div class="form-group col-lg-12" [ngClass]="_validator.displayCss('userName', fgRegistry)">
+                        <input type="text" class="form-control text-center" placeholder="Nombre de usuario"
+                            maxlength="150" formControlName="userName">
+                        <app-field-error-display [displayError]="_validator.isFieldInvalid('userName', fgRegistry)"
+                            errorMsg="{{_validator.errorMessage}}">
+                        </app-field-error-display>
+                    </div>
+
+                    <div class="form-group col-lg-12" [ngClass]="_validator.displayCssSelect('idGender', fgRegistry)">
+                        <select class="form-control text-center" formControlName="idGender">
+                            <option disabled [value]=0>Selecciona tu genero </option>
+                            <option *ngFor="let x of lstGender" [value]="x.id">
+                                {{x.name}}
+                            </option>
+                        </select>
+                        <app-field-error-display [displayError]="_validator.isFieldInvalid('idGender', fgRegistry)"
+                            errorMsg="{{_validator.errorMessage}}">
+                        </app-field-error-display>
+                    </div>
+                    <div class="form-group col-lg-12"
+                        [ngClass]="{ 'has-error has-feedback': _user.errorCssEmail('email', fgRegistry) }">
+                        <input type="text" class="form-control text-center" placeholder="Correo electrónico"
+                            maxlength="150" formControlName="email">
+                        <app-field-error-display [displayError]="_validator.isFieldInvalid('email', fgRegistry)"
+                            errorMsg="{{_validator.errorMessage}}">
+                        </app-field-error-display>
+                        <app-field-error-display [displayError]="_user.errorCssEmail('email', fgRegistry)"
+                            errorMsg="Dirección de correo electrónico inválida">
+                        </app-field-error-display>
+                    </div>
+                    <div class="form-group col-lg-12" [ngClass]="_user.verifyPassword('confirmPassword', fgRegistry)">
+                        <input type="password" class="form-control text-center" placeholder="Contraseña" maxlength="150"
+                            formControlName="password" (paste)="false" showHidePass>
+                        <app-field-error-display [displayError]="_validator.isFieldInvalid('password', fgRegistry)"
+                            errorMsg="{{_validator.errorMessage}}">
+                        </app-field-error-display>
+                    </div>
+                    <div class="form-group col-lg-12" [ngClass]="_user.verifyPassword('confirmPassword', fgRegistry)">
+                        <input type="password" class="form-control text-center" placeholder="Confirmar contraseña"
+                            maxlength="150" formControlName="confirmPassword" (paste)="false" showHidePass>
+                        <app-field-error-display
+                            [displayError]="_validator.isFieldInvalid('confirmPassword', fgRegistry)"
+                            errorMsg="{{_validator.errorMessage}}">
+                        </app-field-error-display>
+                        <app-field-error-display [displayError]="!_user.passwordsMatch(fgRegistry)"
+                            errorMsg="Las contraseñas no coinciden.">
+                        </app-field-error-display>
+                        <app-field-error-display [displayError]="!_user.isValidPassword(fgRegistry)"
+                            errorMsg="Las contraseña debe contener: al menos una mayúscula, una minúscula, un símbolo, un número y 10 caracteres.">
+                        </app-field-error-display>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer footer-registry">
+        <div *ngIf="ruta == '/user'">
+            <button type="button" class="btn btn-primary btn-md" aria-label="Close" (click)="btnClose()">
+                Cancelar
+            </button>
+            <button type="button" class="btn btn-success btn-md" [disabled]="bLoading" (click)="bntRegister()">
+                Guardar
+                <i class="fa fa-spinner fa-spin fa-fw" *ngIf="bLoading"></i>
+            </button>
+        </div>
+        <div *ngIf="ruta!='/user'">
+            <div
+                class="col-lg-4 col-lg-offset-4 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0 text-center">
+                <button type="button" (click)="bntRegister()" [disabled]="bLoading"
+                    class="btn btn-md btn-danger m-btn--pill" *ngIf="ruta !='/user'">Registrarse
+                    <i class="fa fa-spinner fa-spin fa-fw" *ngIf="bLoading"></i>
+                </button>
+            </div>
+            <div
+                class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0 text-center">
+                <br>
+                <a href="javascript:void(0);" (click)="btnOpenLogin()">¿Ya tienes cuenta? Inicia sesión</a>
+            </div>
+        </div>
+    </div>
+</ng-template>

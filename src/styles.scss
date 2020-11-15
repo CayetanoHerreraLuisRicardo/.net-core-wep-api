@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* template */
+@import './assets/css/bootstrap.css';
+@import './assets/css/owl.carousel.css';
+@import './assets/css/font-awesome.css';
+@import './assets/css/loader.css';
+@import './assets/css/docs.css';
+
+/* Alertas */
+@import "~ngx-toastr/toastr.css";
+
+// Variables.
+$primary: blue;
+$secondary: pink;
+
+// Kendo UI
+@import "~@progress/kendo-theme-default/scss/panelbar/_index.scss";
+@import "~@progress/kendo-theme-default/scss/grid/_index.scss";
+
+/* Animaciones */
+@import './assets/css/animate.min.css';

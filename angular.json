@@ -24,9 +24,17 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/jquery-1.12.4.min.js",
+              "src/assets/js/bootstrap.js",
+              "src/assets/js/owl.carousel.js",
+              "src/assets/js/jquery.form-validator.min.js",
+              "src/assets/js/jquery.selectbox-0.2.js",
+              "src/assets/js/placeholder.js",
+              "src/assets/js/coustem.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -119,6 +127,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "AngularSlabon"
 }

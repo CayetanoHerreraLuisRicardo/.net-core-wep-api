@@ -1,0 +1,59 @@
+<header id="header" class="style2">
+  <nav id="nav-main">
+    <div class="navbar navbar-inverse">
+      <div class="navbar-header">
+        <a [routerLink]="['index']" class="navbar-brand">
+        </a>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class="sub-menu" *ngIf="(isLoggedIn$ | async)" routerLinkActive="active sub-menu"
+            routerLinkActiveOptions="{ exact: true }">
+            <a href="javascript:void(0)">
+              <img *ngIf="(isLoggedIn$ | async)" src="assets/images/users/100_1.jpg" class="user-pic" /><span
+                *ngIf="(isLoggedIn$ | async)">{{(strUserName$ | async)}}</span>
+              <span class="caret c-red"></span>
+            </a>
+            <ul>
+              <li>
+                <a href="javascript:void(0)" (click)="btnSingOff()">
+                  <i class="fa fa-sign-out"></i> Cerrar Sesión</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <form class="navbar-form navbar-right">
+        <button class="btn btn-danger" (click)="btnOpenRegistry(registry)"
+          *ngIf=" !(isLoggedIn$ | async)">Registrarse</button>
+      </form>
+      <form class="navbar-form navbar-right">
+        <button class="btn btn-danger" (click)="btnOpenLogin(login)" *ngIf=" !(isLoggedIn$ | async)">Iniciar
+          sesión</button>
+      </form>
+      <div class="navbar-collapse collapse">
+      </div>
+      <div class="navbar-collapse navbar-left collapse">
+        <ul class="nav navbar-nav">
+          <li routerLinkActive="active" routerLinkActiveOptions="{ exact: true }">
+            <a [routerLink]="['index']">Home</a>
+          </li>
+          <li *ngIf="(isLoggedIn$ | async)" routerLinkActive="active" routerLinkActiveOptions="{ exact: true }">
+            <a [routerLink]="['user']">Usuarios</a>
+          </li>
+          <li *ngIf="(isLoggedIn$ | async)" class="menu-logout2" routerLinkActive="active sub-menu"
+            routerLinkActiveOptions="{ exact: true }">
+            <a href="javascript:void(0)" (click)="btnSingOff()">Cerrar sesión</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+<popup-login></popup-login>
+<popup-signup></popup-signup>

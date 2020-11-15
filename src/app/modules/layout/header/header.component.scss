@@ -1,0 +1,41 @@
+/* Imagen del perfil en miniatura */
+.user-pic {
+    height: 30px;
+    border-radius: 50px;
+    float: left;
+    margin-right: 5px;
+  }
+// Cambiando estilos del menú
+  #header.style2 {background:#fff; }
+  #header.style2 .mega-menu .menu-view {padding-left:15%; padding-right:15%; }
+  #header.style2 #nav-main {padding-left:40px; padding-right:40px; }
+  #header.style2 .navbar-nav > li > a:after {background:#fe5969; }
+  #header.style2 .navbar-nav > li.active > a {color:#fe5969; }
+  #header.style2 .navbar-nav > li:hover > a {color:#fe5969; }
+  #header.style2 .navbar-nav > li > ul:after {border-bottom:10px solid #fe5969;}
+  #header.style2 .navbar-nav > li > ul {border-top:solid 2px #fe5969; }
+  #header.style2 .navbar-nav > li > ul li a:hover {color:#fe5969; }
+  #header.style2 .mega-menu .menu-view ul li a:hover {color:#fe5969;}
+  #header.style2 .mega-menu .menu-view {border-top:solid 2px #fe5969;}
+  .banner.style2 {overflow:hidden; }
+  #header.style2 .cart-box .fa:hover {background:#fe5969;}
+  #header.style2 .search-box .fa:hover {background:#fe5969;}
+
+.c-red {
+  color: red;
+}
+.cursor {
+  cursor: pointer;
+}
+
+.menu-logout2 {
+  display: inline !important;
+  visibility: visible !important;
+}
+
+@media screen and (min-width: 768px) {
+  .menu-logout2 {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
