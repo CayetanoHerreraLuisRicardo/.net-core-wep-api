@@ -22,6 +22,6 @@ La dependencias usada se llama  [ng-slabon-api-client](https://www.npmjs.com/pac
 
 ## Proyecto .NET CORE Web API
 
-La API esta hecha con .NET Core Wep API. (API REST) aqui te dejo mi [Repositorio de la API](https://github.com/CayetanoHerreraLuisRicardo/.net-core-wep-api) para que puedas clonarlo y ver como funciona en tu entorno local.
+La API esta hecha con .NET Core Wep API. (API REST) aqui te dejo mi [Repositorio de la API](https://github.com/CayetanoHerreraLuisRicardo/.net-core-api-rest) para que puedas clonarlo y ver como funciona en tu entorno local.
 
 Aquí el  [DEMO](https://cayetanoherreraluisricardo.github.io/Angular/users-crud/) la cual esta apuntando a http://localhost:59353 (asugúrate de correr tu API .NET Core en el puerto 52353 para poder ver el demo) en cuanto a las CORS no te preocupes el proyecto NET CORE esta habilitado para aceptar cualquier origen.
